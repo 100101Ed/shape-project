@@ -42,8 +42,8 @@ public class Shape {
 	 * @param color
 	 */
 	public Shape() {
-		this(RequestInput.getString("What is the name of the shape:"),
-				RequestInput.getString("What is the type of the shape:", "Square", "Circle", "Triangle"),
+		this(RequestInput.getString("What is the name of the shape:"), RequestInput
+				.getString("What is the type of the shape (Square, Circle, Triangle):", "Square", "Circle", "Triangle"),
 				RequestInput.getString("What is the color of the shape:"));
 	}
 

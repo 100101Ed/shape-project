@@ -28,8 +28,6 @@ public class ShapeTest {
 	@Test
 	public void test() {
 		Shape myShape1 = new Shape();
-		Shape myShape2 = new Shape("Advanced Shape", "Square", "Blue");
-		System.out.println("My Shape 1: " + myShape1.toString());
-		System.out.println("My Shape 2: " + myShape2.toString());
+		System.out.println(myShape1.toString());
 	}
 }
