@@ -1,20 +1,22 @@
 /**
- * File Name: ShapeClassIntro.java<br>
- * Mora, Eduardo<br>
+ * File Name: Shape.java<br>
+ * Nepton, Jean-francois<br>
  * Java Boot Camp Exercise<br>
  * Instructor: Jean-francois Nepton<br>
- * Created: Feb 2, 2016
+ * Created: Feb 1, 2016
  */
 package com.sqa.em.shape;
 
+import com.sqa.em.util.helper.RequestInput;
+
 /**
- * ShapeClassIntro //ADDD (description of class)
+ * Shape //ADDD (description of class)
  * <p>
  * //ADDD (description of core fields)
  * <p>
  * //ADDD (description of core methods)
  *
- * @author Mora, Eduardo
+ * @author Nepton, Jean-francois
  * @version 1.0.0
  * @since 1.0
  */
@@ -28,7 +30,7 @@ public class Shape {
 
 	private int numSides;
 
-	private boolean ellipsis;
+	private boolean ellipse;
 
 	private boolean polygon;
 
@@ -40,9 +42,9 @@ public class Shape {
 	 * @param color
 	 */
 	public Shape() {
-		this.name = "My Shape";
-		this.type = "Shape";
-		this.color = "white";
+		this(RequestInput.getString("What is the name of the shape:"),
+				RequestInput.getString("What is the type of the shape:", "Square", "Circle", "Triangle"),
+				RequestInput.getString("What is the color of the shape:"));
 	}
 
 	/**
@@ -51,9 +53,34 @@ public class Shape {
 	 * @param color
 	 */
 	public Shape(String name, String type, String color) {
-		this.name = name;
-		this.type = type;
-		this.color = color;
+		this.setName(name);
+		this.setType(type);
+		this.setColor(color);
+		switch (type.toLowerCase()) {
+		case "square":
+			this.setEllipse(false);
+			this.setSquare(true);
+			this.setPolygon(true);
+			this.setNumSides(4);
+			break;
+		case "circle":
+			this.setEllipse(true);
+			this.setSquare(false);
+			this.setPolygon(false);
+			this.setNumSides(0);
+			break;
+		case "triangle":
+			this.setEllipse(false);
+			this.setSquare(false);
+			this.setPolygon(true);
+			this.setNumSides(4);
+			break;
+		default:
+			this.setEllipse(false);
+			this.setSquare(false);
+			this.setPolygon(false);
+			this.setNumSides(0);
+		}
 	}
 
 	/**
@@ -87,8 +114,8 @@ public class Shape {
 	/**
 	 * @return the eclipse
 	 */
-	public boolean isEllipsis() {
-		return this.ellipsis;
+	public boolean isEllipse() {
+		return this.ellipse;
 	}
 
 	/**
@@ -117,8 +144,8 @@ public class Shape {
 	 * @param eclipse
 	 *            the eclipse to set
 	 */
-	public void setEllipsis(boolean eclipse) {
-		this.ellipsis = eclipse;
+	public void setEllipse(boolean eclipse) {
+		this.ellipse = eclipse;
 	}
 
 	/**
@@ -161,9 +188,6 @@ public class Shape {
 		this.type = type;
 	}
 
-	/**
-	 * @see java.lang.Object#toString()
-	 */
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
@@ -175,13 +199,23 @@ public class Shape {
 		builder.append(this.color);
 		builder.append(", numSides=");
 		builder.append(this.numSides);
-		builder.append(", ellipsis=");
-		builder.append(this.ellipsis);
+		builder.append(", ellipse=");
+		builder.append(this.ellipse);
 		builder.append(", polygon=");
 		builder.append(this.polygon);
 		builder.append(", square=");
 		builder.append(this.square);
 		builder.append("]");
 		return builder.toString();
+	}
+
+	public String toString2() {
+		StringBuilder sb = new StringBuilder();
+		sb.append("My Shape:");
+		sb.append(this.getName());
+		sb.append(" (");
+		sb.append(this.getType());
+		sb.append(")");
+		return sb.toString();
 	}
 }
