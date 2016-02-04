@@ -35,26 +35,26 @@ public class Shape {
 	private boolean square;
 
 	/**
-     * @param name
-     * @param type
-     * @param color
-     */
-    public Shape() {
-        this.name = "My Shape";
-        this.type = "Shape";
-        this.color = "white";
-    }
+	 * @param name
+	 * @param type
+	 * @param color
+	 */
+	public Shape() {
+		this.name = "My Shape";
+		this.type = "Shape";
+		this.color = "white";
+	}
 
 	/**
-     * @param name
-     * @param type
-     * @param color
-     */
-    public Shape(String name, String type, String color) {
-        this.name = name;
-        this.type = type;
-        this.color = color;
-    }
+	 * @param name
+	 * @param type
+	 * @param color
+	 */
+	public Shape(String name, String type, String color) {
+		this.name = name;
+		this.type = type;
+		this.color = color;
+	}
 
 	/**
 	 * @return the color
@@ -159,5 +159,29 @@ public class Shape {
 	 */
 	public void setType(String type) {
 		this.type = type;
+	}
+
+	/**
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("Shape [name=");
+		builder.append(this.name);
+		builder.append(", type=");
+		builder.append(this.type);
+		builder.append(", color=");
+		builder.append(this.color);
+		builder.append(", numSides=");
+		builder.append(this.numSides);
+		builder.append(", ellipsis=");
+		builder.append(this.ellipsis);
+		builder.append(", polygon=");
+		builder.append(this.polygon);
+		builder.append(", square=");
+		builder.append(this.square);
+		builder.append("]");
+		return builder.toString();
 	}
 }
